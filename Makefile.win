@@ -1,0 +1,36 @@
+# Project: game
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+RES      = game_private.res
+OBJ      = ../C++/ACLLib-master/src/acllib.o ÐÇ¿Õ.o $(RES)
+LINKOBJ  = ../C++/ACLLib-master/src/acllib.o ÐÇ¿Õ.o $(RES)
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -L"C:/Users/DELL/Desktop/C++/ACLLib-master/src" -static-libgcc -mwindows D:/Dev-Cpp/MinGW64/lib/libbfd.a D:/Dev-Cpp/MinGW64/lib/libgdi32.a D:/Dev-Cpp/MinGW64/lib/libkernel32.a D:/Dev-Cpp/MinGW64/lib/libmsimg32.a D:/Dev-Cpp/MinGW64/lib/libole32.a D:/Dev-Cpp/MinGW64/lib/liboleaut32.a D:/Dev-Cpp/MinGW64/lib/libopcodes.a D:/Dev-Cpp/MinGW64/lib/libuser32.a D:/Dev-Cpp/MinGW64/lib/libuuid.a D:/Dev-Cpp/MinGW64/lib/libwinmm.a -g3
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = game.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+../C++/ACLLib-master/src/acllib.o: ../C++/ACLLib-master/src/acllib.c
+	$(CC) -c ../C++/ACLLib-master/src/acllib.c -o ../C++/ACLLib-master/src/acllib.o $(CFLAGS)
+
+ÐÇ¿Õ.o: ÐÇ¿Õ.c
+	$(CC) -c ÐÇ¿Õ.c -o ÐÇ¿Õ.o $(CFLAGS)
+
+game_private.res: game_private.rc 
+	$(WINDRES) -i game_private.rc --input-format=rc -o game_private.res -O coff 
+
